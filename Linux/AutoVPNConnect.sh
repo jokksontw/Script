@@ -24,6 +24,7 @@ chmod +x /etc/ppp/ip-up.d/vpnroute
 
 echo '#!/bin/bash
 if [ "$PPP_IPPARAM" == "uxvpn" ]; then
+    poff uxvpn
     pon uxvpn
 fi' > /etc/ppp/ip-down.d/autoReconnectVPN
 
