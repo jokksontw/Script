@@ -18,6 +18,7 @@ echo '#!/bin/bash
 if [ "$PPP_IPPARAM" == "uxvpn" ]; then
      route add -net 117.0.0.0/8 dev $PPP_IFACE
      route add 8.8.8.8/32 dev $PPP_IFACE
+     echo 'nameserver 8.8.8.8' > /etc/resolv.conf
 fi' > /etc/ppp/ip-up.d/vpnroute
 
 chmod +x /etc/ppp/ip-up.d/vpnroute
