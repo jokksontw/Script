@@ -41,4 +41,18 @@ echo '#!/bin/sh -e
 /root/auto-connect-vpn.sh&
 exit 0' > /etc/rc.local
 
+cd /root
+crontab -l > currnet_crontab
+echo "*/10 * * * * /root/modifyDNStoGoogle.sh" >> currnet_crontab
+crontab currnet_crontab
+rm currnet_crontab
+
+cd /root
+echo '#!/bin/bash
+echo "nameserver 8.8.8.8" > /etc/resolv.conf' > /root/modifyDNStoGoogle.sh
+
+chmod +x /root/modifyDNStoGoogle.sh
+
+/root/modifyDNStoGoogle.sh
+
 pon uxvpn
